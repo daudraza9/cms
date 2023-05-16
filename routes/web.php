@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,10 @@ use Illuminate\Support\Facades\Route;
 // // Route::get('/post/{id}',[PostController::class,'index']);
 
 // Route::resource('post','PostController');
-Route::get('contact',[PostController::class,'contact']);
+// Route::get('contact',[PostController::class,'contact']);
 
-Route::get('post/{id}',[PostController::class,'show_post']);
+// Route::get('post/{id}',[PostController::class,'show_post']);
+
+Route::get('/insert',function(){
+    DB::insert('insert into posts (title,content) values(?,?)',['PHP with laravel','Php laravel is the best thing that has happend']);
+});
