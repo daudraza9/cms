@@ -16,6 +16,8 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->tinyInteger('is_admin');
+            $table->integer('user_id')->unsigned();
             $table->text('content');
             $table->timestamps();
         });
