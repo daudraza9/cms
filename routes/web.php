@@ -111,10 +111,20 @@ use Illuminate\Support\Facades\Route;
 //     return Post::find($id)->user->name;
 // });
 
-Route::get('/posts',function(){
-    $user = User::find(1);
+// Route::get('/posts',function(){
+//     $user = User::find(1);
 
-    foreach($user->posts as $post){
-        echo $post->title . "<br>";
-    }
+//     foreach($user->posts as $post){
+//         echo $post->title . "<br>";
+//     }
+// });
+
+//Many to Many relationship
+
+Route::get('user/{id}/role',function($id){
+    $user = User::find($id)->roles()->orderBy('id','desc')->get();
+    return $user;
+    // foreach($user->roles as $role){
+    //     echo $role->name;
+    // }
 });
